@@ -1,0 +1,54 @@
+[build-system]
+requires = ["poetry-core>=1.8"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "quantum-exps"
+version = "0.1.0"
+description = ""
+authors = ["Tatsuya Yatagawa <tatsy.mail@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+numpy = "^1.26.4"
+openjij = "^0.9.2"
+jupyter = "^1.0.0"
+ipywidgets = "^8.1.2"
+scikit-image = "^0.23.2"
+matplotlib = "^3.9.0"
+seaborn = "^0.13.2"
+opencv-python = "^4.9.0.80"
+pyqubo = "^1.4.0"
+
+[tool.poetry.group.dev.dependencies]
+pyproject-flake8 = "^7.0.0"
+black = "^24.4.2"
+mypy = "^1.10.0"
+isort = "^5.13.2"
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "primary"
+
+[tool.isort]
+profile = "black"
+length_sort = true
+line_length = 99
+
+[tool.mypy]
+python_version = "3.9"
+follow_imports = "silent"
+disallow_any_generics = true
+strict_optional = true
+check_untyped_defs = true
+allow_redefinition = true
+
+[tool.flake8]
+max-line-length = 99
+ignore = "Q000,E127,E203,E402,W503,W504"
+
+[tool.black]
+target-version = ["py39", "py310", "py311"]
+line-length = 99

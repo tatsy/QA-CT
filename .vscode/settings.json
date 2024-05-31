@@ -1,0 +1,28 @@
+{
+    // Bibtex
+    "[bibtex]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
+    },
+    // Markdown
+    "[markdown]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+    },
+    // Python
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    // Jupyter
+    "notebook.markup.fontSize": 14,
+    "notebook.lineNumbers": "off",
+    "notebook.formatOnSave.enabled": false,
+    "notebook.formatOnCellExecution": true,
+}
