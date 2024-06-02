@@ -1,1 +1,3 @@
 *.pdf
+output/*
+dwave.conf
