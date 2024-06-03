@@ -1,3 +1,4 @@
 *.pdf
 output/*
 dwave.conf
+.ipynb_checkpoints/
