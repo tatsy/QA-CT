@@ -1,3 +1,4 @@
+import os
 import time
 import argparse
 
@@ -52,6 +53,7 @@ def main():
     parser.add_argument("--size", type=int, default=20)
     parser.add_argument("--bits", type=int, default=4)
     parser.add_argument("--use_leap", action="store_true")
+    parser.add_argument("--output", type=str, default="output")
 
     args = parser.parse_args()
 
@@ -134,7 +136,10 @@ def main():
     vars = np.empty(shape=(height, width), dtype="object")
     for y in range(height):
         for x in range(width):
-            vars[y, x] = pyqubo.UnaryEncInteger(f"x[{y}][{x}]", (0, factor))
+            # vars[y, x] = pyqubo.UnaryEncInteger(f"x[{y}][{x}]", (0, factor))
+            # vars[y, x] = pyqubo.LogEncInteger(f"x[{y}][{x}]", (0, factor))
+            # vars[y, x] = pyqubo.OneHotEncInteger(f"x[{y}][{x}]", (0, factor), strength=5.0)
+            vars[y, x] = pyqubo.OrderEncInteger(f"x[{y}][{x}]", (0, factor), strength=5.0)
 
     # construct QUBO
     time_s = time.time()
@@ -228,10 +233,12 @@ def main():
     axs[1, 1].set(xticks=[], yticks=[])
     fig.colorbar(ims, ax=axs[1, 1], shrink=0.9)
 
-    fig.savefig(f"{label}.png", bbox_inches="tight")
+    os.makedirs(args.output, exist_ok=True)
+    outname = os.path.join(args.output, f"{label}.png")
+    fig.savefig(outname, bbox_inches="tight")
     plt.close()
 
-    print("File saved:", f"{label}.png")
+    print("File saved:", outname)
 
 
 if __name__ == "__main__":
